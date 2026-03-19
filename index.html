@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>СНТ Энергосад №2</title>
 
-<meta name="description" content="Официальный сайт СНТ Энергосад №2. Новости, документы и контакты.">
+<meta name="description" content="Официальный сайт СНТ Энергосад №2">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -15,7 +15,6 @@
   --card:#ffffff;
   --text:#1f2d3d;
   --accent:#2e7d32;
-  --muted:#6b7a90;
   --shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
@@ -24,64 +23,52 @@ body.dark{
   --card:#1a2333;
   --text:#e6edf7;
   --accent:#4caf50;
-  --muted:#9fb0c7;
   --shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
-  transition:background 0.4s,color 0.4s;
-  overflow-x:hidden;
+  transition:0.3s;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
   width:100%;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.7);
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 20px;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.7);
   z-index:1000;
-  transition:0.3s;
 }
 
 body.dark .navbar{
   background:rgba(15,23,36,0.8);
 }
 
-.logo{
-  font-weight:700;
-  font-size:18px;
-}
+.logo{font-weight:700;}
 
 .nav-controls{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:20px;
 }
 
-/* ===== THEME SWITCH ===== */
+/* THEME */
 .theme-toggle{
   cursor:pointer;
   font-size:18px;
-  transition:0.3s;
 }
 
-.theme-toggle:hover{
-  transform:rotate(20deg);
-}
-
-/* ===== BURGER ===== */
+/* BURGER */
 .menu-btn{
   width:26px;
   height:20px;
@@ -94,7 +81,6 @@ body.dark .navbar{
   width:100%;
   height:3px;
   background:var(--text);
-  left:0;
   transition:0.3s;
   border-radius:2px;
 }
@@ -117,7 +103,7 @@ body.dark .navbar{
   top:8px;
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 .sidebar{
   position:fixed;
   top:0;
@@ -131,18 +117,15 @@ body.dark .navbar{
   z-index:1500;
 }
 
-.sidebar.active{
-  left:0;
-}
+.sidebar.active{left:0;}
 
 .sidebar a{
   display:block;
-  margin-bottom:15px;
   padding:12px;
-  border-radius:10px;
+  margin-bottom:12px;
   text-decoration:none;
   color:var(--text);
-  font-weight:500;
+  border-radius:10px;
   transition:0.2s;
 }
 
@@ -159,30 +142,18 @@ body.dark .navbar{
   z-index:1400;
 }
 
-.overlay.active{
-  display:block;
-}
+.overlay.active{display:block;}
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
-  position:relative;
   height:90vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   color:white;
-  overflow:hidden;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
   background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-  transform:translateY(0);
-  transition:transform 0.2s ease-out;
-  z-index:-2;
+  position:relative;
 }
 
 .hero::after{
@@ -190,23 +161,16 @@ body.dark .navbar{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.65);
-  z-index:-1;
 }
 
 .hero-content{
+  position:relative;
+  z-index:2;
   max-width:800px;
-  padding:20px;
 }
 
-.hero h1{
-  font-size:36px;
-  margin-bottom:20px;
-}
-
-.hero p{
-  font-size:18px;
-  opacity:0.9;
-}
+.hero h1{font-size:36px;margin-bottom:20px;}
+.hero p{font-size:18px;}
 
 .hero-btn{
   margin-top:25px;
@@ -220,20 +184,16 @@ body.dark .navbar{
   transition:0.3s;
 }
 
-.hero-btn:hover{
-  transform:translateY(-3px);
-}
+.hero-btn:hover{transform:translateY(-3px);}
 
-/* ===== CONTENT ===== */
+/* CONTENT */
 .container{
   max-width:1100px;
   margin:80px auto;
   padding:0 20px;
 }
 
-.section{
-  margin-bottom:70px;
-}
+.section{margin-bottom:70px;}
 
 .section-title{
   font-size:26px;
@@ -249,15 +209,13 @@ body.dark .navbar{
   transition:0.3s;
 }
 
-.card:hover{
-  transform:translateY(-6px);
-}
+.card:hover{transform:translateY(-6px);}
 
-/* ===== FADE ANIMATION ===== */
+/* FADE */
 .fade{
   opacity:0;
   transform:translateY(30px);
-  transition:0.8s ease;
+  transition:0.8s;
 }
 
 .fade.show{
@@ -265,12 +223,10 @@ body.dark .navbar{
   transform:translateY(0);
 }
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .hero h1{font-size:24px;}
   .hero p{font-size:15px;}
 }
-
 </style>
 </head>
 <body>
@@ -279,7 +235,7 @@ body.dark .navbar{
   <div class="logo">СНТ «Энергосад №2»</div>
   <div class="nav-controls">
     <div class="theme-toggle" id="themeToggle">🌙</div>
-    <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+    <div class="menu-btn" id="menuBtn">
       <span></span>
       <span></span>
       <span></span>
@@ -288,19 +244,19 @@ body.dark .navbar{
 </div>
 
 <div class="sidebar" id="sidebar">
-  <a href="#about" onclick="toggleMenu()">О СНТ</a>
-  <a href="#news" onclick="toggleMenu()">Новости</a>
-  <a href="#documents" onclick="toggleMenu()">Документы</a>
-  <a href="#contact" onclick="toggleMenu()">Контакты</a>
+  <a href="#about">О СНТ</a>
+  <a href="#news">Новости</a>
+  <a href="#documents">Документы</a>
+  <a href="#contact">Контакты</a>
 </div>
 
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="overlay" id="overlay"></div>
 
 <section class="hero">
   <div class="hero-content">
     <h1>Официальный портал СНТ «Энергосад №2»</h1>
-    <p>Информация для собственников, новости и документы товарищества</p>
-    <a href="#documents" class="hero-btn">Перейти к документам</a>
+    <p>Новости и документы товарищества</p>
+    <a href="#documents" class="hero-btn">Документы</a>
   </div>
 </section>
 
@@ -309,8 +265,7 @@ body.dark .navbar{
 <div id="about" class="section fade">
   <div class="section-title">О СНТ</div>
   <div class="card">
-    СНТ «Энергосад №2» объединяет собственников земельных участков и обеспечивает
-    управление общей территорией, инфраструктурой и соблюдение устава товарищества.
+    СНТ объединяет собственников земельных участков и обеспечивает управление общей территорией.
   </div>
 </div>
 
@@ -318,7 +273,7 @@ body.dark .navbar{
   <div class="section-title">Новости</div>
   <div class="card">
     <strong>19 марта 2026 года</strong><br><br>
-    Состоялось общее собрание собственников участков. Протокол будет размещён в разделе документов.
+    Состоялось общее собрание собственников.
   </div>
 </div>
 
@@ -334,10 +289,9 @@ body.dark .navbar{
 <div id="contact" class="section fade">
   <div class="section-title">Контакты</div>
   <div class="card">
-    <strong>Председатель СНТ:</strong><br>
-    Иванов Иван<br><br>
+    Председатель: Иванов Иван<br>
     Телефон: <a href="tel:+79121234567">+7 912 123 45 67</a><br><br>
-    <strong>Реквизиты для добровольных пожертвований:</strong><br>
+    Реквизиты для добровольных пожертвований:<br>
     Перевод по номеру телефона через СБП.
   </div>
 </div>
@@ -345,94 +299,33 @@ body.dark .navbar{
 </div>
 
 <script>
-function toggleMenu(){
-  document.getElementById("sidebar").classList.toggle("active");
-  document.getElementById("overlay").classList.toggle("active");
-  document.getElementById("menuBtn").classList.toggle("active");
-}
+const menuBtn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
 
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
-    toggleMenu();
+menuBtn.onclick=()=>{
+  menuBtn.classList.toggle("active");
+  sidebar.classList.toggle("active");
+  overlay.classList.toggle("active");
+};
+
+overlay.onclick=()=>menuBtn.onclick();
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    menuBtn.classList.remove("active");
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
   }
 });
 
-/* ===== PARALLAX ===== */
-window.addEventListener("scroll", function(){
-  const hero = document.querySelector(".hero");
-  hero.style.setProperty('--scroll', window.scrollY + "px");
-  hero.querySelector("::before");
-  hero.style.setProperty("background-position","center");
-  hero.style.setProperty("--parallax", window.scrollY * 0.4 + "px");
-  hero.style.setProperty("transform","translateY(0)");
-  hero.style.setProperty("--dummy","0");
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  hero.style.setProperty;
-  document.querySelector(".hero::before");
-});
-
-/* Parallax proper */
+/* PARALLAX */
 window.addEventListener("scroll",()=>{
-  document.querySelector(".hero").style.setProperty(
-    "--bg-pos",
-    window.scrollY * 0.4 + "px"
-  );
-  document.querySelector(".hero").style.setProperty(
-    "background-position",
-    "center " + window.scrollY * 0.4 + "px"
-  );
+  document.querySelector(".hero").style.backgroundPosition =
+    "center " + window.scrollY * 0.4 + "px";
 });
 
-/* Fade in */
-const faders=document.querySelectorAll(".fade");
+/* FADE */
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -440,15 +333,18 @@ const observer=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:0.2});
-faders.forEach(el=>observer.observe(el));
 
-/* Theme toggle */
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+/* THEME */
 const toggle=document.getElementById("themeToggle");
+
 if(localStorage.getItem("theme")==="dark"){
   document.body.classList.add("dark");
   toggle.textContent="☀️";
 }
-toggle.onclick=function(){
+
+toggle.onclick=()=>{
   document.body.classList.toggle("dark");
   if(document.body.classList.contains("dark")){
     localStorage.setItem("theme","dark");
@@ -457,7 +353,7 @@ toggle.onclick=function(){
     localStorage.setItem("theme","light");
     toggle.textContent="🌙";
   }
-}
+};
 </script>
 
 </body>
