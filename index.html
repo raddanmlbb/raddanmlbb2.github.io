@@ -8,10 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-html{
-  scroll-behavior:smooth;
-}
-
+html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -19,8 +16,7 @@ body{
   color:#1f2d3d;
 }
 
-/* ===== ФИКСИРОВАННАЯ ШАПКА ===== */
-
+/* ===== ШАПКА ===== */
 .navbar{
   position:fixed;
   top:0;
@@ -35,11 +31,11 @@ body{
 }
 
 .logo{
-  font-weight:700;
-  font-size:18px;
   display:flex;
   align-items:center;
   gap:8px;
+  font-weight:700;
+  font-size:18px;
 }
 
 .logo-circle{
@@ -71,8 +67,17 @@ body{
   color:white;
 }
 
-/* ===== HERO ===== */
+.login-btn{
+  background:#2e7d32 !important;
+  color:white !important;
+  font-weight:600;
+}
 
+.login-btn:hover{
+  background:#256628 !important;
+}
+
+/* ===== HERO ===== */
 .hero{
   margin-top:70px;
   background:
@@ -114,9 +119,7 @@ body{
   transition:0.2s;
 }
 
-.primary-btn:hover{
-  background:#256628;
-}
+.primary-btn:hover{background:#256628;}
 
 .secondary-btn{
   background:white;
@@ -128,12 +131,9 @@ body{
   transition:0.2s;
 }
 
-.secondary-btn:hover{
-  background:#e6f4ea;
-}
+.secondary-btn:hover{background:#e6f4ea;}
 
 /* ===== КОНТЕНТ ===== */
-
 .container{
   max-width:1100px;
   margin:70px auto;
@@ -160,21 +160,16 @@ body{
   transition:0.2s;
 }
 
-.card:hover{
-  transform:translateY(-4px);
-}
+.card:hover{transform:translateY(-4px);}
 
 .doc-item{
   padding:10px 0;
   border-bottom:1px solid #eee;
 }
 
-.doc-item:last-child{
-  border-bottom:none;
-}
+.doc-item:last-child{border-bottom:none;}
 
 /* ===== МОДАЛЬНОЕ ОКНО ===== */
-
 .modal{
   position:fixed;
   top:0;
@@ -193,24 +188,42 @@ body{
   padding:35px;
   border-radius:18px;
   max-width:420px;
+  width:90%;
   text-align:center;
   box-shadow:0 20px 60px rgba(0,0,0,0.2);
 }
 
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+button{
+  background:#2e7d32;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  margin-top:5px;
+}
+
+button:hover{background:#256628;}
+
 .close-btn{
-  margin-top:20px;
+  margin-top:10px;
   background:#ddd;
   color:#333;
-  border:none;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
 }
 
 .hidden{display:none}
 
 /* ===== АДАПТАЦИЯ ===== */
-
 @media(max-width:600px){
   .hero h1{font-size:24px;}
   .hero p{font-size:15px;}
@@ -229,6 +242,12 @@ function openSupport(){
 function closeSupport(){
   document.getElementById('supportModal').classList.add('hidden');
 }
+function openLogin(){
+  document.getElementById('loginModal').classList.remove('hidden');
+}
+function closeLogin(){
+  document.getElementById('loginModal').classList.add('hidden');
+}
 </script>
 
 </head>
@@ -244,6 +263,7 @@ function closeSupport(){
     <a href="#news">Новости</a>
     <a href="#documents">Документы</a>
     <a href="#contact">Контакты</a>
+    <a href="#" class="login-btn" onclick="openLogin()">Войти</a>
   </div>
 </div>
 
@@ -262,8 +282,8 @@ function closeSupport(){
 <div id="about">
   <div class="section-title">О СНТ</div>
   <div class="card">
-    СНТ «Энергосад 2» — садовое товарищество, объединяющее собственников участков. 
-    На портале публикуются новости, решения собраний и важная информация.
+    СНТ «Энергосад 2» объединяет собственников участков и обеспечивает
+    организацию общего управления территорией.
   </div>
 </div>
 
@@ -293,13 +313,14 @@ function closeSupport(){
 <div id="contact">
   <div class="section-title">Контакты</div>
   <div class="card">
-    Председатель СНТ<br><br>
-    Телефон: +7 912 111 22 33<br>
+    Телефон для связи: +7 912 111 22 33<br>
     Сбербанк СБП
   </div>
 </div>
 
 </div>
+
+<!-- МОДАЛЬНЫЕ ОКНА -->
 
 <div id="supportModal" class="modal hidden">
   <div class="modal-content">
@@ -308,6 +329,16 @@ function closeSupport(){
     <p><strong>+7 912 111 22 33</strong></p>
     <p>Сбербанк</p>
     <button class="close-btn" onclick="closeSupport()">Закрыть</button>
+  </div>
+</div>
+
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Вход в личный кабинет</h3>
+    <input placeholder="Телефон">
+    <input type="password" placeholder="Пароль">
+    <button>Войти</button>
+    <button class="close-btn" onclick="closeLogin()">Закрыть</button>
   </div>
 </div>
 
