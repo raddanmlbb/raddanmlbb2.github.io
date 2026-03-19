@@ -15,10 +15,49 @@ body{
   color:#2c3e50;
 }
 
-/* ШАПКА С КАРТИНКОЙ */
+/* ===== ШАПКА ===== */
+
+.navbar{
+  background:white;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.nav-title{
+  font-weight:600;
+  font-size:18px;
+}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  text-decoration:none;
+  padding:8px 14px;
+  background:#e8f0fe;
+  border-radius:6px;
+  font-size:14px;
+  color:#1a3c6e;
+  transition:0.2s;
+}
+
+.nav-links a:hover{
+  background:#2e7d32;
+  color:white;
+}
+
+/* ===== HERO ===== */
+
 .hero{
   background:
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80");
   background-size:cover;
   background-position:center;
@@ -29,37 +68,16 @@ body{
 
 .hero h1{
   margin:0;
-  font-size:28px;
+  font-size:26px;
 }
 
 .hero p{
   margin-top:10px;
-  font-size:16px;
+  font-size:15px;
   opacity:0.9;
 }
 
-/* НАВИГАЦИЯ */
-.navbar{
-  background:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-.nav-links{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.nav-links a{
-  text-decoration:none;
-  color:#2c3e50;
-  font-weight:500;
-}
+/* ===== КОНТЕНТ ===== */
 
 .container{
   max-width:1000px;
@@ -69,37 +87,47 @@ body{
 
 .card{
   background:white;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.05);
-  margin-bottom:20px;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  margin-bottom:25px;
+}
+
+/* ===== ФОРМА ВХОДА ===== */
+
+.login-card{
+  max-width:400px;
+  margin:40px auto;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
 }
 
 button{
   background:#2e7d32;
   color:white;
   border:none;
-  padding:10px 18px;
-  border-radius:6px;
+  padding:12px 18px;
+  border-radius:8px;
   cursor:pointer;
   font-weight:500;
+  transition:0.2s;
 }
 
 button:hover{
   background:#256628;
 }
 
-input{
-  width:100%;
-  padding:10px;
-  margin-bottom:12px;
-  border-radius:6px;
-  border:1px solid #ddd;
-}
-
 .hidden{display:none}
 
-/* ПРОГРЕСС */
+/* ===== ПРОГРЕСС ===== */
+
 .progress{
   height:8px;
   background:#ddd;
@@ -113,10 +141,11 @@ input{
   border-radius:5px;
 }
 
-/* АДАПТАЦИЯ */
+/* ===== АДАПТАЦИЯ ===== */
+
 @media(max-width:600px){
   .hero h1{
-    font-size:22px;
+    font-size:20px;
   }
   .nav-links{
     width:100%;
@@ -141,7 +170,7 @@ function showResults(){
 <body>
 
 <div class="navbar">
-  <div><strong>СНТ «Энергосад 2»</strong></div>
+  <div class="nav-title">СНТ «Энергосад 2»</div>
   <div class="nav-links">
     <a href="#" onclick="showPage('home')">Главная</a>
     <a href="#" onclick="showPage('news')">Новости</a>
@@ -160,18 +189,14 @@ function showResults(){
 <div id="home" class="page">
   <div class="card">
     <h2>Добро пожаловать</h2>
-    <p>Это демонстрационная версия сайта. Вы можете перейти в разделы меню и посмотреть структуру будущего портала.</p>
+    <p>Демонстрационная версия сайта СНТ.</p>
   </div>
 </div>
 
 <div id="news" class="page hidden">
   <div class="card">
     <h3>Общее собрание</h3>
-    <p>19 марта 2026 года состоится собрание собственников СНТ.</p>
-  </div>
-  <div class="card">
-    <h3>Оплата взносов</h3>
-    <p>Просим оплатить членские взносы до 1 мая.</p>
+    <p>19 марта 2026 года состоится собрание собственников.</p>
   </div>
 </div>
 
@@ -185,7 +210,6 @@ function showResults(){
     <div id="results" class="hidden">
       <p>Да — 65%</p>
       <div class="progress"><div class="bar" style="width:65%"></div></div>
-
       <p>Нет — 35%</p>
       <div class="progress"><div class="bar" style="width:35%"></div></div>
     </div>
@@ -193,7 +217,7 @@ function showResults(){
 </div>
 
 <div id="login" class="page hidden">
-  <div class="card">
+  <div class="card login-card">
     <h3>Вход</h3>
     <input placeholder="Телефон">
     <input type="password" placeholder="Пароль">
@@ -202,7 +226,7 @@ function showResults(){
 </div>
 
 <div id="dashboard" class="page hidden">
-  <div class="card">
+  <div class="card login-card">
     <h3>Личный кабинет</h3>
     <input value="Иванов Иван Иванович">
     <input value="Участок 45">
