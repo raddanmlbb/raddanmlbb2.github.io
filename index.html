@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -22,7 +21,7 @@ body{
   top:0;
   width:100%;
   background:white;
-  padding:16px 20px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -31,94 +30,56 @@ body{
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
   font-weight:700;
   font-size:18px;
 }
 
-.logo-circle{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:#2e7d32;
-}
-
 /* Бургер */
 .menu-btn{
-  font-size:22px;
+  font-size:24px;
   cursor:pointer;
-  display:none;
+  display:block;
 }
 
 /* Десктопное меню */
 .nav-links{
-  display:flex;
-  gap:10px;
-}
-
-.nav-links a{
-  text-decoration:none;
-  padding:8px 14px;
-  border-radius:8px;
-  background:#eef3ff;
-  color:#2e4c9a;
-  font-size:14px;
-  font-weight:500;
-  transition:0.2s;
-}
-
-.nav-links a:hover{
-  background:#2e7d32;
-  color:white;
-}
-
-.login-btn{
-  background:#2e7d32 !important;
-  color:white !important;
+  display:none;
 }
 
 /* ===== HERO ===== */
 .hero{
-  margin-top:70px;
+  margin-top:60px;
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80");
   background-size:cover;
   background-position:center;
-  padding:110px 20px;
+  padding:90px 20px;
   text-align:center;
   color:white;
 }
 
 .hero h1{
-  font-size:28px;
+  font-size:22px;
   margin:0;
 }
 
 /* ===== КОНТЕНТ ===== */
 .container{
-  max-width:1100px;
-  margin:60px auto;
+  max-width:1000px;
+  margin:40px auto;
   padding:0 20px;
-}
-
-.section-title{
-  font-size:22px;
-  margin-bottom:20px;
-  font-weight:600;
 }
 
 .card{
   background:white;
-  padding:22px;
+  padding:20px;
   border-radius:16px;
   box-shadow:0 12px 30px rgba(0,0,0,0.06);
   margin-bottom:20px;
 }
 
-/* ===== БОКОВОЕ МЕНЮ ===== */
+/* ===== SIDEBAR ===== */
 .sidebar{
   position:fixed;
   top:0;
@@ -126,8 +87,8 @@ body{
   width:250px;
   height:100%;
   background:white;
-  box-shadow:4px 0 20px rgba(0,0,0,0.1);
   padding:20px;
+  box-shadow:4px 0 20px rgba(0,0,0,0.15);
   transition:0.3s;
   z-index:2000;
 }
@@ -167,13 +128,33 @@ body{
   display:block;
 }
 
-/* ===== АДАПТАЦИЯ ===== */
-@media(max-width:768px){
-  .nav-links{
+/* ===== ДЕСКТОП ===== */
+@media(min-width:900px){
+
+  .menu-btn{
     display:none;
   }
-  .menu-btn{
-    display:block;
+
+  .nav-links{
+    display:flex;
+    gap:10px;
+  }
+
+  .nav-links a{
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    background:#eef3ff;
+    color:#2e4c9a;
+  }
+
+  .nav-links a:hover{
+    background:#2e7d32;
+    color:white;
+  }
+
+  .sidebar{
+    display:none;
   }
 }
 </style>
@@ -194,69 +175,50 @@ function closeMenu(){
 <body>
 
 <div class="navbar">
-  <div class="logo">
-    <div class="logo-circle"></div>
-    СНТ «Энергосад 2»
-  </div>
+  <div class="logo">СНТ «Энергосад 2»</div>
 
   <div class="nav-links">
     <a href="#about">О СНТ</a>
     <a href="#news">Новости</a>
     <a href="#documents">Документы</a>
     <a href="#contact">Контакты</a>
-    <a href="#" class="login-btn">Войти</a>
   </div>
 
   <div class="menu-btn" onclick="openMenu()">☰</div>
 </div>
 
-<!-- Боковое меню -->
 <div class="sidebar" id="sidebar">
   <a href="#about" onclick="closeMenu()">О СНТ</a>
   <a href="#news" onclick="closeMenu()">Новости</a>
   <a href="#documents" onclick="closeMenu()">Документы</a>
   <a href="#contact" onclick="closeMenu()">Контакты</a>
-  <a href="#" onclick="closeMenu()">Войти</a>
 </div>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="hero">
-  <h1>Официальный портал СНТ «Энергосад 2»</h1>
-  <p>Информация для собственников</p>
+  <h1>Официальный портал СНТ</h1>
 </div>
 
 <div class="container">
 
-<div id="about">
-  <div class="section-title">О СНТ</div>
-  <div class="card">
-    Современный портал для управления и информирования собственников.
-  </div>
+<div id="about" class="card">
+  Современный портал для управления и информирования собственников.
 </div>
 
-<div id="news">
-  <div class="section-title">Новости</div>
-  <div class="card">
-    19 марта 2026 года состоится собрание собственников.
-  </div>
+<div id="news" class="card">
+  19 марта 2026 года состоится собрание собственников.
 </div>
 
-<div id="documents">
-  <div class="section-title">Документы</div>
-  <div class="card">
-    Устав СНТ<br>
-    Протоколы собраний<br>
-    Финансовые отчёты
-  </div>
+<div id="documents" class="card">
+  Устав СНТ<br>
+  Протоколы собраний<br>
+  Финансовые отчёты
 </div>
 
-<div id="contact">
-  <div class="section-title">Контакты</div>
-  <div class="card">
-    Телефон: +7 912 111 22 33<br>
-    Сбербанк СБП
-  </div>
+<div id="contact" class="card">
+  Телефон: +7 912 111 22 33<br>
+  Сбербанк СБП
 </div>
 
 </div>
