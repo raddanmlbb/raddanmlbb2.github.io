@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СНТ Энергосад 2</title>
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#2c3e50}
+.header{background:#e9eef6;padding:15px;display:flex;justify-content:space-between}
+.header a{text-decoration:none;margin-left:15px;color:#2c3e50}
+.container{padding:20px;max-width:900px;margin:auto}
+.card{background:white;padding:20px;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.05);margin-bottom:20px}
+button{background:#4c6ef5;color:white;border:none;padding:10px 15px;border-radius:5px;cursor:pointer}
+input{width:100%;padding:8px;margin-bottom:10px;border:1px solid #ddd;border-radius:5px}
+.hidden{display:none}
+.progress{height:8px;background:#ddd;border-radius:5px;margin:5px 0 15px}
+.bar{height:8px;background:#4c6ef5;border-radius:5px}
+</style>
+
+<script>
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+}
+function showResults(){
+document.getElementById('results').classList.remove('hidden');
+}
+</script>
+
+</head>
+<body>
+
+<div class="header">
+<div><strong>СНТ «Энергосад 2»</strong></div>
+<div>
+<a href="#" onclick="showPage('home')">Главная</a>
+<a href="#" onclick="showPage('news')">Новости</a>
+<a href="#" onclick="showPage('votes')">Голосования</a>
+<a href="#" onclick="showPage('login')">Войти</a>
+</div>
+</div>
+
+<div class="container">
+
+<div id="home" class="page">
+<div class="card">
+<h2>Официальный портал СНТ</h2>
+<p>Демонстрационная версия сайта.</p>
+</div>
+</div>
+
+<div id="news" class="page hidden">
+<div class="card">
+<h3>Общее собрание</h3>
+<p>19 марта 2026 года состоится собрание собственников.</p>
+</div>
+<div class="card">
+<h3>Оплата взносов</h3>
+<p>Просим оплатить взносы до 1 мая.</p>
+</div>
+</div>
+
+<div id="votes" class="page hidden">
+<div class="card">
+<h3>Установить шлагбаум?</h3>
+<input type="radio" name="vote"> Да<br>
+<input type="radio" name="vote"> Нет<br><br>
+<button onclick="showResults()">Проголосовать</button>
+<div id="results" class="hidden">
+<p>Да — 65%</p>
+<div class="progress"><div class="bar" style="width:65%"></div></div>
+<p>Нет — 35%</p>
+<div class="progress"><div class="bar" style="width:35%"></div></div>
+</div>
+</div>
+</div>
+
+<div id="login" class="page hidden">
+<div class="card">
+<h3>Вход</h3>
+<input placeholder="Телефон">
+<input type="password" placeholder="Пароль">
+<button onclick="showPage('dashboard')">Войти</button>
+</div>
+</div>
+
+<div id="dashboard" class="page hidden">
+<div class="card">
+<h3>Личный кабинет</h3>
+<input value="Иванов Иван Иванович">
+<input value="Участок 45">
+<button>Сохранить</button>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
