@@ -22,7 +22,7 @@ body{
   top:0;
   width:100%;
   background:white;
-  padding:16px 25px;
+  padding:16px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -45,10 +45,17 @@ body{
   background:#2e7d32;
 }
 
+/* Бургер */
+.menu-btn{
+  font-size:22px;
+  cursor:pointer;
+  display:none;
+}
+
+/* Десктопное меню */
 .nav-links{
   display:flex;
   gap:10px;
-  flex-wrap:wrap;
 }
 
 .nav-links a{
@@ -70,11 +77,6 @@ body{
 .login-btn{
   background:#2e7d32 !important;
   color:white !important;
-  font-weight:600;
-}
-
-.login-btn:hover{
-  background:#256628 !important;
 }
 
 /* ===== HERO ===== */
@@ -91,52 +93,14 @@ body{
 }
 
 .hero h1{
-  font-size:32px;
+  font-size:28px;
   margin:0;
 }
-
-.hero p{
-  margin-top:14px;
-  font-size:17px;
-  opacity:0.9;
-}
-
-.hero-buttons{
-  margin-top:30px;
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.primary-btn{
-  background:#2e7d32;
-  color:white;
-  padding:13px 22px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.2s;
-}
-
-.primary-btn:hover{background:#256628;}
-
-.secondary-btn{
-  background:white;
-  color:#2e7d32;
-  padding:13px 22px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.2s;
-}
-
-.secondary-btn:hover{background:#e6f4ea;}
 
 /* ===== КОНТЕНТ ===== */
 .container{
   max-width:1100px;
-  margin:70px auto;
+  margin:60px auto;
   padding:0 20px;
 }
 
@@ -146,107 +110,83 @@ body{
   font-weight:600;
 }
 
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-}
-
 .card{
   background:white;
   padding:22px;
   border-radius:16px;
   box-shadow:0 12px 30px rgba(0,0,0,0.06);
-  transition:0.2s;
+  margin-bottom:20px;
 }
 
-.card:hover{transform:translateY(-4px);}
-
-.doc-item{
-  padding:10px 0;
-  border-bottom:1px solid #eee;
+/* ===== БОКОВОЕ МЕНЮ ===== */
+.sidebar{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:250px;
+  height:100%;
+  background:white;
+  box-shadow:4px 0 20px rgba(0,0,0,0.1);
+  padding:20px;
+  transition:0.3s;
+  z-index:2000;
 }
 
-.doc-item:last-child{border-bottom:none;}
+.sidebar.active{
+  left:0;
+}
 
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
-.modal{
+.sidebar a{
+  display:block;
+  text-decoration:none;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:8px;
+  background:#eef3ff;
+  color:#2e4c9a;
+}
+
+.sidebar a:hover{
+  background:#2e7d32;
+  color:white;
+}
+
+/* Затемнение */
+.overlay{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.5);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index:1500;
 }
 
-.modal-content{
-  background:white;
-  padding:35px;
-  border-radius:18px;
-  max-width:420px;
-  width:90%;
-  text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+.overlay.active{
+  display:block;
 }
-
-input{
-  width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:10px;
-  border:1px solid #ddd;
-  font-size:14px;
-}
-
-button{
-  background:#2e7d32;
-  color:white;
-  border:none;
-  padding:12px 18px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:600;
-  margin-top:5px;
-}
-
-button:hover{background:#256628;}
-
-.close-btn{
-  margin-top:10px;
-  background:#ddd;
-  color:#333;
-}
-
-.hidden{display:none}
 
 /* ===== АДАПТАЦИЯ ===== */
-@media(max-width:600px){
-  .hero h1{font-size:24px;}
-  .hero p{font-size:15px;}
+@media(max-width:768px){
   .nav-links{
-    width:100%;
-    justify-content:center;
-    margin-top:10px;
+    display:none;
+  }
+  .menu-btn{
+    display:block;
   }
 }
 </style>
 
 <script>
-function openSupport(){
-  document.getElementById('supportModal').classList.remove('hidden');
+function openMenu(){
+  document.getElementById("sidebar").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
 }
-function closeSupport(){
-  document.getElementById('supportModal').classList.add('hidden');
-}
-function openLogin(){
-  document.getElementById('loginModal').classList.remove('hidden');
-}
-function closeLogin(){
-  document.getElementById('loginModal').classList.add('hidden');
+
+function closeMenu(){
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
 }
 </script>
 
@@ -258,23 +198,32 @@ function closeLogin(){
     <div class="logo-circle"></div>
     СНТ «Энергосад 2»
   </div>
+
   <div class="nav-links">
     <a href="#about">О СНТ</a>
     <a href="#news">Новости</a>
     <a href="#documents">Документы</a>
     <a href="#contact">Контакты</a>
-    <a href="#" class="login-btn" onclick="openLogin()">Войти</a>
+    <a href="#" class="login-btn">Войти</a>
   </div>
+
+  <div class="menu-btn" onclick="openMenu()">☰</div>
 </div>
+
+<!-- Боковое меню -->
+<div class="sidebar" id="sidebar">
+  <a href="#about" onclick="closeMenu()">О СНТ</a>
+  <a href="#news" onclick="closeMenu()">Новости</a>
+  <a href="#documents" onclick="closeMenu()">Документы</a>
+  <a href="#contact" onclick="closeMenu()">Контакты</a>
+  <a href="#" onclick="closeMenu()">Войти</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="hero">
   <h1>Официальный портал СНТ «Энергосад 2»</h1>
-  <p>Информация для собственников, новости и голосования</p>
-
-  <div class="hero-buttons">
-    <a href="#" class="primary-btn" onclick="openSupport()">Поддержать СНТ</a>
-    <a href="#documents" class="secondary-btn">Документы</a>
-  </div>
+  <p>Информация для собственников</p>
 </div>
 
 <div class="container">
@@ -282,64 +231,34 @@ function closeLogin(){
 <div id="about">
   <div class="section-title">О СНТ</div>
   <div class="card">
-    СНТ «Энергосад 2» объединяет собственников участков и обеспечивает
-    организацию общего управления территорией.
+    Современный портал для управления и информирования собственников.
   </div>
 </div>
 
 <div id="news">
   <div class="section-title">Новости</div>
-  <div class="card-grid">
-    <div class="card">
-      <h4>Общее собрание</h4>
-      <p>19 марта 2026 года состоится собрание собственников.</p>
-    </div>
-    <div class="card">
-      <h4>Оплата взносов</h4>
-      <p>Просим оплатить членские взносы до 1 мая.</p>
-    </div>
+  <div class="card">
+    19 марта 2026 года состоится собрание собственников.
   </div>
 </div>
 
 <div id="documents">
   <div class="section-title">Документы</div>
   <div class="card">
-    <div class="doc-item">Устав СНТ</div>
-    <div class="doc-item">Протоколы собраний</div>
-    <div class="doc-item">Финансовые отчёты</div>
+    Устав СНТ<br>
+    Протоколы собраний<br>
+    Финансовые отчёты
   </div>
 </div>
 
 <div id="contact">
   <div class="section-title">Контакты</div>
   <div class="card">
-    Телефон для связи: +7 912 111 22 33<br>
+    Телефон: +7 912 111 22 33<br>
     Сбербанк СБП
   </div>
 </div>
 
-</div>
-
-<!-- МОДАЛЬНЫЕ ОКНА -->
-
-<div id="supportModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>Поддержать СНТ</h3>
-    <p>Перевод по СБП:</p>
-    <p><strong>+7 912 111 22 33</strong></p>
-    <p>Сбербанк</p>
-    <button class="close-btn" onclick="closeSupport()">Закрыть</button>
-  </div>
-</div>
-
-<div id="loginModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>Вход в личный кабинет</h3>
-    <input placeholder="Телефон">
-    <input type="password" placeholder="Пароль">
-    <button>Войти</button>
-    <button class="close-btn" onclick="closeLogin()">Закрыть</button>
-  </div>
 </div>
 
 </body>
